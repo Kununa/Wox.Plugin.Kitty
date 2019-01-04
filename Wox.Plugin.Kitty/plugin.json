@@ -1,12 +1,12 @@
 ﻿{
-  "ID": "f78e500cceaf413dbb6f0e33b37943db", //Plugin ID，32 bit UUID
-  "ActionKeyword": "kt", //Plugin default action keyword
-  "Name": "kitty Launcher", //Plugin name
-  "Description": "Launch Kitty sessions", //Plugin description
-  "Author": "kununa", //Plugin Author
-  "Version": "1.0.0", //Plugin version，must be x.x.x format
-  "Language": "csharp", //Plugin language，we support csharp,python and executable now
-  "Website": "http://www.getwox.com", //Plugin website or author website
-  "IcoPath": "kitty.png", //Plugin icon, relative path to the pluign folder
-  "ExecuteFileName": "Wox.Plugin.Kitty.dll" //Execution entry. Dll name for c# plugin, and python file for python plugin
+  "ID": "f78e500cceaf413dbb6f0e33b37943db", 
+  "ActionKeyword": "kt", 
+  "Name": "kitty Launcher", 
+  "Description": "Launch Kitty sessions", 
+  "Author": "kununa", 
+  "Version": "1.0.0", 
+  "Language": "csharp", 
+  "Website": "https://github.com/Kununa/Wox.Plugin.Kitty",
+  "IcoPath": "kitty.png", 
+  "ExecuteFileName": "Wox.Plugin.Kitty.dll" 
 }

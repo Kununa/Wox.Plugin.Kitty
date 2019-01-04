@@ -28,6 +28,8 @@ namespace Wox.Plugin.Kitty
             {
                 if (session == "Default%20Settings")
                     continue;
+                if (query.Search != "" && !session.ToUpper().StartsWith(query.Search.ToUpper()))
+                    continue;
                 results.Add(new Result()
                 {
                     Title = session,
