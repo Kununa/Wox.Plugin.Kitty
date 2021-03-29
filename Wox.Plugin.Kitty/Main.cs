@@ -15,6 +15,8 @@ namespace Wox.Plugin.Kitty
         {
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string confFileName = Path.Combine(assemblyFolder, "path.conf");
+            if (!File.Exists(confFileName))
+                return;
             kittyFolderPath = File.ReadAllText(confFileName).Replace(System.Environment.NewLine, "") + "\\";
             kittyPath = FindKittyExe();
         }
@@ -22,12 +24,10 @@ namespace Wox.Plugin.Kitty
         public List<Result> Query(Query query)
         {
             List<Result> results = new List<Result>();
-            if (kittyFolderPath == "" || kittyPath == "")
+            if (string.IsNullOrEmpty(kittyFolderPath) || string.IsNullOrEmpty(kittyPath))
                 return results;
-            foreach (string session in KittySessions())
+            foreach (var session in KittySessions())
             {
-                if (session == "Default%20Settings")
-                    continue;
                 if (query.Search != "" && !session.ToUpper().StartsWith(query.Search.ToUpper()))
                     continue;
                 results.Add(new Result()
@@ -47,7 +47,7 @@ namespace Wox.Plugin.Kitty
 
         private string[] KittySessions()
         {
-            return (new List<string>(Directory.GetFiles(kittyFolderPath + "Sessions"))).Select(x => x.Split('\\').Last()).ToArray();
+            return (new List<string>(Directory.GetFiles(kittyFolderPath + "Sessions"))).Select(x => x.Split('\\').Last()).Where(x => x != "Default%20Settings").ToArray();
         }
 
         private string FindKittyExe()

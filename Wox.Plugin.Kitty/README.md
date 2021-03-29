@@ -1,0 +1,1 @@
+﻿Icon not my property and all rights belong to the original owner.
